@@ -1,0 +1,325 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+/*顶部*/
+.header{
+	width: 100%;
+	height:60px;
+	background: #07cbc9;
+	position: fixed;
+	z-index: 4;
+}
+.header div img{
+	float: left;
+	padding-top: 8px;
+	padding-left: 50px;
+	width: 200px;
+}
+.header div ul{
+	padding: 0 25px 0;
+	list-style-type: none;
+}
+.header div ul li {
+	text-align: center;
+	float: right;
+	color: #fff;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 60px;
+	width: 90px;
+
+}
+
+ .header div ul li:hover{
+ 	text-decoration:none;
+ 	background-color:#000;
+	cursor: pointer;
+
+ 	}/*鼠标悬浮状态*/
+
+.clear{
+	clear: both;
+}
+/*banner图*/
+.banner .fill{
+	width: 100%;
+	height: 60px;
+}
+.banner img{
+	width: 100%;
+	height:400px;
+    
+}
+.banner .bannerLayer{
+	width: 100%;
+	height:400px;
+	background-color: #000;
+	opacity: 0.5;
+	position: absolute;
+	top: 60px;
+	left: 0;
+}
+.banner .bannerLayer-top{
+	width:400px;
+	position: absolute;
+	top: 140px;
+	left: 50%;
+	margin-left: -200px;
+}
+.banner .bannerLayer-top form input,
+.banner .bannerLayer-top form textarea{
+	border: solid;
+	outline:none;
+	margin-bottom: 15px;
+	background-color:transparent;
+	font-size: 12px;
+	line-height: 2em;
+	border-color: #999;
+	border-width: 2px;
+}
+.banner .bannerLayer-top form input:hover{
+	border-color:#07cbc9;
+}
+.banner .bannerLayer-top form textarea:hover{
+	border-color:#07cbc9;
+}
+.banner .bannerLayer-top form button{
+	width: 120px;
+	height: 40px;
+	color: #999;
+	background-color:transparent;
+	text-align: center;
+	font-size: 12px;
+	border: solid 2px;
+	border-color: #999;
+	margin-left: 115px;
+}
+.banner .bannerLayer-top form button:hover{
+	background-color:#07cbc9;
+	border: none;
+	color: #fff;
+
+}
+/*ABOUT区*/
+.about-top{
+	width: 1000px;
+	margin: 50px auto;
+}
+.about-top .titleAbout,
+.gallery .titleGallery{
+	 font-weight: bold;
+     font-size:30px;
+     margin-bottom: 15px;
+     text-align: center;
+}
+.about-top hr,
+.gallery hr,
+.about-top .pic .boxRight1 hr,
+.about-top .pic .boxRight2 hr{
+	margin: 0 auto;
+	width: 30px;
+	border:solid thin #07cbc9;
+}
+.about-top .pic{
+	text-align: center;
+	position: relative;
+}
+.about-top .pic img{
+	height: 400px;
+}
+.about-top .pic .title-left{
+	font-size:28px;
+	width: 180px;
+	position: absolute;
+	top: 0px;
+	left:20px;
+}
+.about-top .pic .boxLeft{
+	text-align: left;
+	width:250px;
+	height: 120px;
+	position: absolute;
+	top: 60px;
+	left:40px;
+	padding: 20px;
+	line-height: 1.5em;
+	z-index: 2;
+}
+.about-top .pic .boxLeft button{
+	width: 90px;
+	height:40px;
+	background: #000;
+	color: #fff;
+	border:#fff;
+	margin-top: 15px;
+}
+.about-top .pic .boxLeft button:hover{
+     background-color:transparent;
+     color: #000;
+     cursor: pointer;
+     border:#000 solid;
+}
+.about-top .pic .boxLeftLayer{
+	text-align: left;
+	border: solid #999999 1.5px;
+	width:250px;
+	height: 180px;
+	position: absolute;
+	top: 60px;
+	left:40px;
+	padding: 20px;
+	background-color: #fff;
+	opacity: 0.5;
+	z-index: 1;
+}
+.about-top .pic .boxRight1{
+	border: solid #07cbc9 1px;
+	text-align: center;
+	width:180px;
+	height: 150px;
+	position: absolute;
+	right:-20px;
+	top:0px;
+}
+.about-top .pic .boxRight2{
+	border: solid #07cbc9 1px;
+	text-align: center;
+	width:180px;
+	height: 150px;
+	position: absolute;
+	right:-20px;
+	top:180px;
+}
+.about-top .pic .boxRight1 .number,
+.about-top .pic .boxRight2 .number{
+	font-weight: bold;
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+.about-top .pic .boxRight1 .students,
+.about-top .pic .boxRight2 .faculty{
+	margin: 15px;
+	font-size: 20px;
+}
+.about-top .content1,
+.gallery .content1{
+	margin: 0 auto;
+	width: 500px;
+	margin-top:15px;	
+	margin-bottom: 15px;
+	line-height: 1.5em;
+	color: #999999;
+}
+.about-bottom{
+	width: 100%;
+	height: auto;
+}
+.about-bottom div img{
+	width:25%;
+	float: left;
+
+}
+.about-bottom .content{
+	width:25%;
+	height: 0;
+	padding-bottom: 25%;
+	float: left;
+	background-color: #07cbc9;
+	color: #fff;
+}
+.about-bottom .content h2{
+	margin: 5%;
+}
+.about-bottom .content .p1{
+	margin: 5%;
+	font-size: 14px;
+	line-height: 1.5em;
+}
+.about-bottom .content .p2{
+	margin: 5%;
+	font-size: 10px;
+	color: #999999;
+	line-height: 1.5em;
+}
+.about-bottom .content button{
+	margin-left:35%;
+	width: 80px;
+	height:35px;
+	background: #000;
+	color: #fff;
+	border:#fff;
+	margin-top: 15px;
+}
+.about-bottom .content button:hover{
+	border: solid #000;
+	background-color: #07cbc9;
+}
+/*GALLERY区*/
+.gallery{
+	width: 1200px;
+	margin: 50px auto;
+}
+.gallery .picBoard{
+	float: left;
+	position: relative;
+	left:50%;
+	width:870px;
+	margin-left: -435px;
+}
+.gallery .picBoard div{
+	float: left;
+	margin: 15px ;
+
+}
+.gallery .picBoard div img{
+	width:250px;
+}
+.gallery .picBoard2{
+	float: left;
+	width:870px;
+	position: relative;
+	left:50%;
+	margin-left:-870px;
+}
+.gallery  .picBoard2 .picDescribe div{
+	float: left;
+	margin: 15px;	
+	width: 230px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #000;
+	color: #fff;
+	text-align: left;
+	padding-left: 20px;
+	position: relative;
+	top:116px;
+	
+}
+.gallery  .picBoard2 .picDescribe2 div{
+	float: left;
+	margin: 15px;	
+	width: 230px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #000;
+	color: #fff;
+	text-align: left;
+	padding-left: 20px;
+	position: relative;
+	top:235px;
+	
+}
+/*页脚区*/
+.footer{
+	margin-top: 30px;
+	width: 100%;
+	height: 50px;
+	background-color: #07cbc9;
+	line-height: 50px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+}
