@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul li{
+			margin: 0;
+			padding: 0;
+		}
+		#ct li{
+			list-style: none;
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-top: 10px;
+			cursor: pointer;
+		}
+		#load-more{
+			display: block;
+			margin: 10px auto;
+			text-align: center;
+			cursor: pointer;
+		}
+		.btn {
+			display: inline-block;
+			height: 40px;
+			line-height: 40px;
+			width: 80px;
+			border: 1px solid #E27272;
+			border-radius: 3px;
+			text-align: center;
+			text-decoration: none;
+			color: #E27272;
+		}
+		.btn:hover{
+			background: green;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<ul id="ct">
+		<li>新闻1</li>
+		<li>新闻2</li>
+	</ul>
+	<a href="#" id="load-more" class="btn">加载更多</a>
+</body>
+<script>
+	var btn = document.querySelector('#load-more')
+	var ct = document.querySelector('#ct')
+	var pageIndex = 3
+	var isDataArrive = true
+
+	btn.addEventListener('click',function(e){
+		e.preventDefault()//取消a链接跳转的默认行为
+		if(!isDataArrive){
+			return;
+		}
+		var xhr = new XMLHttpRequest()
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4){
+				if(xhr.status === 200 || xhr.status == 304){
+				var results = JSON.parse(xhr.responseText)
+				console.log(results)
+				var fragment = document.createDocumentFragment()
+				for(var i=0;i<results.length;i++){
+					var node = document.createElement('li')
+					node.innerText = results[i]
+					fragment.appendChild(node)
+				}
+				ct.appendChild(fragment)
+				pageIndex = pageIndex +5
+				}else{
+				console.log('出错了')
+				} 
+				isDataArrive = true
+			}
+		}
+		xhr.open('get','/loadMore?index='+pageIndex+'&length=5',true)
+		xhr.send()
+		isDataArrive = false
+		
+	})
+
+/*
+与后端达成的约定
+1.采用什么方法 GET／POST
+2.接口名字  /loadMore
+3.接口需要传递哪些参数信息
+	{
+	index:3
+	length:5
+	}
+4.前端想得到怎样的信息格式、数据类型 比如是Json格式的字符串，
+['news1','news2'......'news5']
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
