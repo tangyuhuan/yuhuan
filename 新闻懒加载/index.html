@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<script src="http://kejian.jirengu.com/static/js/jquery-1.11.1.min.js"></script>
+  <style>
+    html,body,h2,p,ul,li{
+      margin: 0;
+      padding: 0;
+    }
+    a{
+      color:#333;
+      text-decoration: none;
+    }
+    .container{
+      max-width: 600px;
+      margin:0 auto;
+    }
+    .item{
+      margin-top: 20px;
+      list-style:none;
+    }
+    .item:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .item img{
+      width:50px;
+      height: 50px;
+      float:left;
+    }
+    .item h2{
+      margin-left: 60px;
+      font-size: 14px;
+    }
+    .item p{
+      margin-left: 60px;
+      font-size: 14px;
+    }
+     .load-more{
+      visibility: hidden;
+      margin: 3px;
+      height: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="news">
+      <li class="item">
+        <a href="#">
+          <img src="http://inews.gtimg.com/newsapp_ls/0/1850819763_150120/0" alt="">
+          <h2>乐视网原第二大股东：呼吁成立“困境基金”挺贾跃亭</h2>
+          <p>鑫根将联合其他股东，成立“困境基金”对乐视...</p>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <img src="http://inews.gtimg.com/newsapp_ls/0/1850426285_150120/0" alt="">
+          <h2>独家还原孙杨48小时：累趴在泳池边 6次泡冰桶</h2>
+          <p>铁一般的“劳模”孙杨，也不禁直呼太累...</p>
+        </a>
+      </li>
+       <li class="item">
+        <a href="#">
+          <img src="http://inews.gtimg.com/newsapp_ls/0/1850426285_150120/0" alt="">
+          <h2>独家还原孙杨48小时：累趴在泳池边 6次泡冰桶</h2>
+          <p>铁一般的“劳模”孙杨，也不禁直呼太累...</p>
+        </a>
+      </li>
+       <li class="item">
+        <a href="#">
+          <img src="http://inews.gtimg.com/newsapp_ls/0/1850426285_150120/0" alt="">
+          <h2>独家还原孙杨48小时：累趴在泳池边 6次泡冰桶</h2>
+          <p>铁一般的“劳模”孙杨，也不禁直呼太累...</p>
+        </a>
+      </li>
+    </ul> 
+    <!--在内容的底部埋入一个dom节点p，设置为用户看不到，当滚动至此节点出现，就发送ajax请求，向后台请求数据-->
+    <p class="load-more"></p>
+  </div>
+  <script>
+    
+    var pageIndex = 0;
+    var isOver = false;
+    var isNewsArrive = true;
+    getNews();
+    $(window).on('scroll', checkNews)
+
+    function checkNews(){
+      if( isShow($('.load-more')) && !isOver && isNewsArrive ){
+       getNews()
+      }      
+    }
+
+    function getNews(){
+      isNewsArrive = false;
+
+      $.get('/getNews',{page: pageIndex}).done(function(ret){
+        isNewsArrive = true;
+        if(ret.status === 0){
+          pageIndex++;
+          appendHtml(ret.data)
+          checkNews()
+        }else{
+          console.log('获取新闻出错')
+        }
+        }).fail(function(){
+        console.log('系统异常')
+      })
+
+    }
+
+
+
+   
+    //  判断元素是否出现在视野中
+    function isShow($node){
+      console.log('show ', $node)
+      var windowHeight = $(window).height(),
+          scrollTop = $(window).scrollTop(),
+          offsetTop = $node.offset().top,
+          nodeHeight = $node.height();
+      if(windowHeight + scrollTop > offsetTop && scrollTop < offsetTop + nodeHeight){
+        return true;
+      }else{
+        return false;
+      }
+
+    }
+
+    //判读元素是不是加载过
+    /*function isLoaded($item){
+      return $item.attr('data-src') === $img.attr('src')
+
+    }
+    //加载图片
+    function loadImg($img){
+      $img.attr('src',$img.attr('data-src'))
+    }
+    */
+    /*
+    [
+     {
+      link: '',
+      img: '',
+      title: '',
+      brif: ''
+      },
+     {}
+    ]
+
+    {
+      p:0 //0-4
+     
+    }
+    p:1 //5-9
+
+    <li class="item">
+        <a href="#">
+          <img src="http://inews.gtimg.com/newsapp_ls/0/1850819763_150120/0" alt="">
+          <h2>乐视网原第二大股东：呼吁成立“困境基金”挺贾跃亭</h2>
+          <p>鑫根将联合其他股东，成立“困境基金”对乐视...</p>
+        </a>
+      </li>
+*/
+    function appendHtml(news){
+      if(news.length === 0){
+        isOver = true;
+        $('.container').append('<p>没有更多数据了~</p>')
+        return;
+      }
+      var htmls = '';
+      $.each(news, function(){
+        htmls += '<li class="item">';
+        htmls += '<a href="'+this.link+'">';
+        htmls += '<img src="'+this.img+'" alt="">';
+        htmls += '<h2>'+this.title+'</h2>';
+        htmls += '<p>'+this.brief+'</p>';
+        htmls += '</a></li>';
+      })
+
+      $('.news').append(htmls);
+    }
+  </script>
+
+</body>
+</html>
