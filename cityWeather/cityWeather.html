@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	 <script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.js"></script>
+	 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<style>
 	  @font-face {
 	  font-family: 'iconfont';  /* project id 368978 */
@@ -24,7 +24,7 @@
 			width:1000px;
 			height:580px;
 			margin:0 auto;
-			background: url(http://img3.imgtn.bdimg.com/it/u=3202302105,2761464246&fm=214&gp=0.jpg) no-repeat;
+			background: url(https://img3.imgtn.bdimg.com/it/u=3202302105,2761464246&fm=214&gp=0.jpg) no-repeat;
 			border-radius: 10px;
 			
 		}
@@ -92,7 +92,7 @@
 	
 
 	$('button').on('click',function(){
-  	$.getJSON("https://jirenguapi.applinzi.com/weather.php?city=杭州",function(data){
+  	$.getJSON("https://jirenguapi.applinzi.com/weather.php?city=上海",function(data){
   		console.log(data)
   		appendHtml(data)
 
