@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.js"></script>
+	<style>
+	  @font-face {
+	  font-family: 'iconfont';  /* project id 368978 */
+	  src: url('//at.alicdn.com/t/font_mo38sy2ex31ve7b9.eot');
+	  src: url('//at.alicdn.com/t/font_mo38sy2ex31ve7b9.eot?#iefix') format('embedded-opentype'),
+	  url('//at.alicdn.com/t/font_mo38sy2ex31ve7b9.woff') format('woff'),
+	  url('//at.alicdn.com/t/font_mo38sy2ex31ve7b9.ttf') format('truetype'),
+	  url('//at.alicdn.com/t/font_mo38sy2ex31ve7b9.svg#iconfont') format('svg');
+	  }
+	  .iconfont {
+	  font-family:"iconfont" !important;
+	  font-size:16px;
+	  font-style:normal;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  }
+		.layout{
+			width:1000px;
+			height:580px;
+			margin:0 auto;
+			background: url(http://img3.imgtn.bdimg.com/it/u=3202302105,2761464246&fm=214&gp=0.jpg) no-repeat;
+			border-radius: 10px;
+			
+		}
+		.layer{
+			width:1000px;
+			height:580px;
+			background-color: rgba(0,0,0,0.6);
+			border-radius: 10px;
+		}
+		.weather{
+			position: absolute;
+			top: 0;
+			color: #fff;
+			font-size: 18px;
+
+		}
+		button{
+			margin: 20px;
+			height:2em;
+			background-color: #3FAEDD; 
+			color:#fff;
+			border:2px solid #C0E1FB;
+			outline: none;
+			font-size: 16px;
+			font-family: '微软雅黑';
+			border-radius: 6px;
+		}
+		button:hover{
+			color:#FBBC28;
+		}
+		.day{
+			float:left;
+			margin-top: 120px;
+			margin-left: 100px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="layout">
+		<div class="layer"></div>
+		<div class="weather">
+			<div><button>点击查看上海天气</button></div>
+			
+		</div>
+	</div>
+
+<script>
+	 function appendHtml(res){
+	 	var $weatherData = res.results[0].weather_data;
+ 		var $len = $weatherData.length;
+
+ 		for(var i=0; i<$len; i++){
+	 	var htmls = '<div class="day">'
+	 	htmls += '<p>'+$weatherData[i].date+'</p>'
+	 	htmls += '<img src="'+$weatherData[i].dayPictureUrl+'">'
+	 	htmls += '<img src="'+$weatherData[i].nightPictureUrl+'">'
+	 	htmls += '<p>'+ $weatherData[i].wind + '</p>'
+	 	htmls += '<p>'+ $weatherData[i].temperature + '</p>'
+	 	htmls += '</div>'
+	 	$('.weather').append(htmls)
+	 	}
+	 }
+
+	
+
+	$('button').on('click',function(){
+  	$.getJSON("https://jirenguapi.applinzi.com/weather.php?city=杭州",function(data){
+  		console.log(data)
+  		appendHtml(data)
+
+  		})
+  	})
+
+
+
+
+		
+
+
+
+</script>
+</body>
+</html>

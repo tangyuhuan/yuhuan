@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.js"></script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.diary {
+			margin:10px;
+		}
+		.diary>li {
+			list-style: none;
+			color: #fff;
+			background-color: #C6171E;
+			padding: 8px;
+			border-bottom: 2px solid #DC272E;
+			width: 150px;
+			position: relative;
+			
+		}
+		.diary>li a{
+			text-decoration: none;
+			color: #fff;
+
+		}
+		.diary>li .diary-type{
+			width: 180px;
+			border: 1px solid #ccc;
+			position: absolute;
+			top:0;
+			left: 166px;
+			
+		}
+		.diary-type li{
+			font-size: 14px;
+			padding: 5px;
+			list-style:none;
+			width: 80px;
+			float:left;
+			cursor: default;
+			
+		}
+		.diary>li .diary-type li a{
+			text-decoration: none;
+			color:#000;
+		}
+
+		.diary li span {
+			float: right;
+		}
+		
+		
+		.diary>li .diary-type.hide {
+			display: none;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul class="diary">
+		<li><a href="#">珠宝玉器</a><span>></span>
+		<ul class="diary-type hide">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a></li>
+			<li><a href="#">珍珠</a></li>
+			<li><a href="#">钻石</a></li>
+			<li><a href="#">琥珀</a></li>
+			<li><a href="#">和田</a></li>
+			<li><a href="#">琥珀</a></li>
+		</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+		<ul class="diary-type hide">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a></li>
+			<li><a href="#">珍珠</a></li>
+		</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+		<ul class="diary-type hide">
+			<li><a href="#">珍珠</a></li>
+			<li><a href="#">钻石</a></li>
+			<li><a href="#">琥珀</a></li>
+			<li><a href="#">和田</a></li>
+		</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+		<ul class="diary-type hide">
+			<li><a href="#">珍珠</a></li>
+			<li><a href="#">钻石</a></li>
+			<li><a href="#">琥珀</a></li>
+			<li><a href="#">和田</a></li>
+		</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+		<ul class="diary-type hide">
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a></li>
+			<li><a href="#">珍珠</a></li>
+			<li><a href="#">钻石</a></li>
+			<li><a href="#">琥珀</a></li>
+			<li><a href="#">和田</a></li>
+			<li><a href="#">琥珀</a></li>
+		</ul>
+		</li>
+	</ul>
+	<script>
+		var $more = $('.diary>li ')
+		$more.on('mouseover',function(){
+			$(this).children('ul').removeClass('hide')
+			$(this).siblings().children('.diary-type').addClass('hide')
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.js"></script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.mod-tab .tabs li{
+			float: left;
+			list-style:none;
+			border:1px solid #CCC;
+			padding: 6px;
+
+		}
+		.mod-tab .tabs li a{
+			text-decoration: none;
+			color:#666;
+			font-size: 14px;
+		}
+		.mod-tab .tabs:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.mod-tab .panels {
+			width:646px;
+			border: 1px solid #CCC;
+			display: none;
+		}
+		.mod-tab .panels-active{
+			display: block;
+		}
+		.mod-tab .panels:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.mod-tab .panels ul li{
+			text-align: center;
+			width:200px;
+			height: 200px;
+			float: left;
+			list-style:none;
+			/*padding:10px;*/
+			border: 1px solid #CCC;
+			margin-right:20px;
+			margin-bottom:20px;
+			font-size: 14px;
+			color: #666;
+			line-height: 1.3em;
+		}
+		.mod-tab .panels ul li:nth-child(3n){
+			margin-right:0px;
+		}
+		.mod-tab .panels ul li .mask{
+			width:200px;
+			height: 200px;
+			background: rgba(0,0,0,0.3);
+			position: relative;
+			top:-190px;
+			z-index: 1;
+			display: none;
+		}
+		.mod-tab .panels ul li .buy {
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			border-radius: 5px;
+			background-color: #fff;
+			position: relative;
+			margin: 0 auto;
+			top:-320px;
+			z-index: 2;
+			display: none;
+		}
+		.mod-tab .panels ul li:hover .mask{
+			display: block;
+		}
+		.mod-tab .panels ul li:hover .buy{
+			display: block;
+		}
+		.mod-tab .panels ul li .buy  a {
+			text-decoration: none;
+			color: #C71623;
+		}
+		.mod-tab .panels ul li img{
+			width:150px;
+		}
+		.mod-tab .panels ul li b {
+
+			color: #C71623;
+		}
+		.mod-tab .panels button{
+			height:40px;
+			border:1px solid #C71623;
+			padding: 5px;
+			background-color:#fff;
+			border-radius: 5px;
+			outline:none;
+
+		}
+		.mod-tab .panels button #load-more{
+			text-decoration: none;
+			color: #C71623;
+			font-size: 16px;
+		}
+        .mod-tab .tabs .li-active{
+			background-color: #ccc;
+		}
+		.mod-tab .tabs li .a-active{
+			color: #C71623;
+		}
+	</style>
+</head>
+<body>
+	<div class="mod-tab">
+		<ul class="tabs">
+			<li class="li-active"><a href="#" class="a-active">热门</a></li>
+			<li><a href="#">珠宝首饰</a></li>
+			<li><a href="#">奢侈品</a></li>
+		</ul>
+		<div class="panels panels-active">
+		<ul>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金999男女指环<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金999男女指环<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金999男女指环<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金999男女指环<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金999男女指环<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金999男女指环<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+		</ul>
+		<button><a href="#" id="load-more" class="btn">加载更多</a></button>
+		</div>
+		<div class="panels">
+		<ul>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>手镯<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>手镯<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>手镯<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>手镯<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>手镯<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>手镯<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+		</ul>
+		<button><a href="#" id="load-more" class="btn">加载更多</a></button>
+		</div>
+		<div class="panels">
+		<ul>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金手链<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金手链<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金手链<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金手链<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金手链<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+			<li><img src="http://ec4.images-amazon.com/images/I/61wNERnER7L._UL1500_.jpg" alt=""><br>足金手链<br><b>¥1599</b><div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>
+		</ul>
+		<button><a href="#" id="load-more" class="btn">加载更多</a></button>
+		</div>
+	</div>
+	<script>
+		var products = [
+	{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手 猴哥款',
+		price: '￥405.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金转运珠 猴哥款',
+		price: '￥100.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手链 3D猴哥款',
+		price: '￥45.00'
+	}
+	];
+
+	function getProdHtml(prod){
+		var html = '';
+		html += '<li>'
+		html += '<img src="'+prod.img+'" alt="">'
+		html += '<br>'+prod.name+'<br>'
+		html += '<b>'+prod.price+'</b>'
+		html += '<div class="mask"></div><div class="buy"><a href="#">点击购买</a></div></li>';
+		return html;
+	}
+
+	var $loadMore = $('.mod-tab .panels button #load-more')
+	$loadMore.on('click',function(e){
+		e.preventDefault();
+		$.each(products,function(idx,prod){
+			var html = getProdHtml(prod)
+			$('.mod-tab .panels ul').append(html)
+		})
+	})
+
+
+		$('.mod-tab .tabs li').on('click',function(){
+			$(this).css('background-color','#ccc')
+			$(this).find('a').css('color','#C71623')
+			$(this).siblings().css('background-color','#fff')
+			$(this).siblings().find('a').css('color','#666')
+			var $index = $(this).index()
+			$('.mod-tab .panels').eq($index).addClass('panels-active')
+			$('.mod-tab .panels').eq($index).siblings().removeClass('panels-active')	
+		})
+		
+	
+	</script>
+</body>
+</html>

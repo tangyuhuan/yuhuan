@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.js"></script>
+	<style>
+		ul li{
+			margin: 0;
+			padding: 0;
+		}
+		.news li{
+			list-style: none;
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-top: 10px;
+			cursor: pointer;
+		}
+		#load-more{
+			display: block;
+			margin: 10px auto;
+			text-align: center;
+			cursor: pointer;
+		}
+		.btn {
+			display: inline-block;
+			height: 40px;
+			line-height: 40px;
+			width: 80px;
+			border: 1px solid #E27272;
+			border-radius: 3px;
+			text-align: center;
+			text-decoration: none;
+			color: #E27272;
+		}
+		.btn:hover{
+			background: green;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<ul class="news">
+		<li>新闻1</li>
+		<li>新闻2</li>
+	</ul>
+</div>
+	<a href="#" id="load-more" class="btn">加载更多</a>
+</body>
+<script>
+	var btn = document.querySelector('#load-more')
+	var ct = document.querySelector('#ct')
+	var pageIndex = 0
+	var isDataArrive = true
+
+	btn.addEventListener('click',function(e){
+		e.preventDefault()//取消a链接跳转的默认行为
+		 $.get('/getNews',{index: pageIndex}).done(function(ret){
+        if(ret.status === 0){
+          pageIndex++;
+          appendHtml(ret.data)
+        }else{
+          console.log('获取内容出错')
+        }
+      }).fail(function(){
+        console.log('系统异常')
+      })
+    })
+		
+
+	function appendHtml(news){
+      if(news.length === 0){
+        $('.load-more').remove();
+        $('.container').append('<p>没有更多数据了~</p>')
+        return;
+      }
+      var htmls = '';
+      $.each(news, function(){
+        htmls += '<li>'+this+'</li>';
+ 
+      })
+      $('.news').append(htmls);
+    }
+  
+
+
+
+
+</script>
+</html>
