@@ -1,187 +1,154 @@
 <!DOCTYPE html>
-<html>
-	<head> 
-	
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>无线轮播</title>
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-	
-		<style type="text/css">
-
-		
-		html,body,ul,li,p{
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<style>
+		.carousel {
+			width: 320px;
+			height: 180px;
+			overflow: hidden;
+			position: relative;
+		}
+		.carousel ul,
+		.carousel li{
 			margin: 0;
 			padding: 0;
-		}
-		li{
 			list-style: none;
 		}
-		a{
-			text-decoration: none;
-		}
-		
-		.carousel{
+		.carousel .img-ct {
 			position: relative;
-			width: 310px;
-			height: 206px;
-			overflow: hidden;
-		}
-		.carousel .img-ct{
-			position: relative;
-		}
-		.carousel .img-ct img{
-			width: 310px;
-			height: 206px;
 		}
 		.carousel .img-ct:after{
 			content: ' ';
 			display: block;
 			clear: both;
 		}
-		.carousel .img-ct li{
+		.carousel .img-ct>li {
 			position: absolute;
 			display: none;
 		}
-
-		.arrow{
+		.carousel .img-ct>li.active {
+			display: block;
+		}
+		.carousel .img-ct img{
+			width: 320px;
+			height: 180px;
+		}
+		.carousel .arrow {
+			display: inline-block;
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+			border: 1px solid #fff;
 			position: absolute;
-		    top: 50%;
-		    margin-top: -15px;
-		    width: 30px;
-		    height: 30px;
-		    line-height: 30px;
-		    text-align: center;
-		    background: #4E443C;
-		    color: #fff;
-		    border-radius: 30px;
-		    box-shadow: 0 0 2px #999;
-		    opacity: 0.8
+			z-index: 1;
+			top: 50%;
+			margin-top: -15px;
+			line-height: 30px;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			box-shadow: 0 0 2px #999;
 		}
-		.arrow:hover {
-		    opacity: 1;
+		.carousel .arrow:hover {
+			opacity: 0.5;
 		}
-		.pre{
+		.carousel .pre {
 			left: 10px;
 		}
-		.next{
+		.carousel .next {
 			right: 10px;
 		}
-		ul.bullet {
-			    position: absolute;
-		    bottom: 10px;
-		    left: 50%;
-		    transform: translateX(-50%);
+		.carousel .bullet {
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -100px;
+			width: 200px;
+			height: 10px;
+			text-align: center;
+
 		}
-		ul.bullet li {
-		    width: 16px;
-		    height: 4px;
-		    border-radius: 2px;
-		    background: #fff;
-		    display: inline-block;
-		    cursor: pointer;
+		.carousel .bullet>li {
+			display: inline-block;
+			width: 30px;
+			height: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			cursor: pointer;
 		}
-
-		ul.bullet li.active {
-		    background: #666;
+		.carousel .bullet>li.active{
+			background: #ccc;
 		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="img-ct">
+			<li data-id=0><a href="#"><img src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=ad37cf6a942f07084b082243814dd2ec/29381f30e924b89983e0a41d64061d950a7bf633.jpg"></a></li>
+			<li data-id=1><a href="#"><img src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=95bec2240055b31988f48a362bc0e853/eac4b74543a98226f581a5028082b9014a90eb57.jpg"></a></li>
+			<li data-id=2><a href="#"><img src="http://pic.58pic.com/58pic/15/14/18/00j58PIC8Gk_1024.jpg"></a></li>
+			<li data-id=3><a href="#"><img src="http://file11.mafengwo.net/M00/DF/BE/wKgBpU46GpW8VmcnAAHSON5-bC074.jpeg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script>
+		var $imgs = $('.carousel .img-ct>li')
+		var $preBtn = $('.carousel .pre')
+		var $nextBtn = $('.carousel .next')
+		var $bullets = $('.carousel .bullet li')
+		var imgCount = $imgs.length
 
 
-		</style>
+		var currentKey = 0
+		var lock = false
 
-	</head>
-	<body>
+		play(0)
+		setInterval(function(){
+			nextPlay()
+		},2000)
 
-		<div class="carousel">
-			<ul class="img-ct">
-				<li data-id=0><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
-				<li data-id=1><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
-				<li data-id=2><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
-				<li data-id=3><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
-			</ul>
-			<a class="pre arrow" href="#"><</a>
-			<a class="next arrow" href="#">></a>
-			<ul class="bullet">
-				<li class="active"></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-
-
-		
-		<script type="text/javascript">
-		//$(function(){
-			
-			var $ct = $('.img-ct'),
-				$items = $ct.children(),
-				$pre = $('.pre'),
-				$next = $('.next'),
-				$bullet = $('.bullet'),
-				imgWidth = $items.width(),
-				imgCount = $ct.children().size();
-
-
-
-			var curIdx = 0;
-			var isAnimate = false;
-
-			$next.on('click', function(){
-				playNext();
-			});
-			$pre.on('click', function(){
-				playPre();
-			});
-			$bullet.find('li').on('click', function(){
-				var idx = $(this).index();
-				play(idx);
-			});
-
-			play(0);
-			autoPlay();
-
-
-
-
-			function playNext(){
-				play((curIdx+1)%imgCount)
-			}
-
-			function playPre(){
-				play((imgCount+curIdx-1)%imgCount)
-			}
-			function play(idx){
-				if(isAnimate) return;
-				isAnimate = true;
-				$items.eq(curIdx).fadeOut(500);
-				$items.eq(idx).fadeIn(500, function(){
-					isAnimate = false;
-				});
-				
-				curIdx = idx;
-				setBullet();
-			}
-
-			function setBullet(){
-				$bullet.children().removeClass('active')
-								  .eq(curIdx).addClass('active');
-			}
-			function stopAuto(){
-				clearInterval(clock);
-			}
-
-			function autoPlay(){
-				clock = setInterval(function(){
-					playNext();
-				}, 2000);	
-			}
-
-
-		//});
-		
-		</script>
-	</body>
+		$nextBtn.click(function(){
+			nextPlay()
+		})
+		$preBtn.click(function(){
+			prePlay()
+		})
+		$bullets.click(function(){
+			play($(this).index())
+		})
+		function nextPlay(){
+			play((currentKey+1)%imgCount)
+		}
+		function prePlay(){
+			play((currentKey+imgCount-1)%imgCount)
+		}
+		function play(page){
+			if(lock) return
+			lock = true
+			$imgs.eq(currentKey).fadeOut(500)
+			$imgs.eq(page).fadeIn(500,function(){
+				lock = false
+			})
+			currentKey = page
+			setBullet()
+		}
+		function setBullet(){
+			$bullets.removeClass('active')
+					.eq(currentKey)
+					.addClass('active')
+		}
+	</script>
+</body>
 </html>
