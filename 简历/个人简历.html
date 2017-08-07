@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    @font-face {
+  font-family: 'iconfont';  /* project id 348308 */
+  src: url('//at.alicdn.com/t/font_nwihz88hwzyta9k9.eot');
+  src: url('//at.alicdn.com/t/font_nwihz88hwzyta9k9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_nwihz88hwzyta9k9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_nwihz88hwzyta9k9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_nwihz88hwzyta9k9.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin:5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+   font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.layout {
+  width:850px;
+  margin:0 auto;
+  border:1px solid #666;
+  box-shadow:2px 5px 5px 5px rgba(0,0,0,0.5)
+}
+#header {
+  margin: 50px 20px 10px 40px;
+}
+#header img {
+  float: left;
+  width: 150px;
+  border-radius: 30px;
+}
+#header .name {
+  float: left; 
+  margin: 55px 0 0 30px;
+}
+#header .contacts {
+  float: right; 
+  width: 280px;
+  margin: 10px;
+  
+}
+#header .contacts h4 {
+  border-bottom: 4px solid;
+  width: 280px;
+  padding:5px 0;
+}
+#header .contacts p {
+  margin-top:10px;
+  line-height: 1.5;
+}
+#header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+h3 {
+  padding: 5px 5px 5px 0;
+  border-bottom: 2px #ccc solid;
+  width: 400px;
+  font-size: 20px;
+}
+#professional-skills h3 {
+  width: 280px;
+}
+span.circle {
+  display: inline-block;
+  width: 0 px;
+  height: 0px;
+  border: 5px solid black;
+  border-radius: 50%;
+  vertical-align:middle; 
+  margin-right:36px;
+  padding:8px;    
+}
+#work-experience,
+#education,
+#extra-curricular-activities,
+#professional-skills,
+#language,
+#Awards
+ {
+  margin: 0 30px;
+}
+#language ul li{
+  list-style: none;
+  padding:10px 5px ;
+  display: inline-block;
+}
+#Awards ul li,
+#extra-curricular-activities ul li{
+  list-style: none;
+  padding:10px 5px ;
+}
+#professional-skills {
+  float: right;
+  margin-right: 20px;
+  width: 280px;
+}
+
+#professional-skills ul li {
+  list-style: none;
+  display: inline-block;
+  padding:10px 5px ;
+}
+dl {
+  margin: 30px 0;
+}
+dt {
+  font-size: 19px;
+  margin-left: -12px;
+}
+dd {
+  padding: 10px 0px 10px 50px;
+  border-left: 3px solid;
+  line-height: 1.5;
+}
+em{
+  opacity: 0.5;
+  font-size:14px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div id="header">
+      <img src="证件照2.png">
+      <div class="name">
+        <h1>Yuhuan tang</h1>
+        <p>Front End Developer</p>
+      </div>
+      <div class="contacts">
+        <h4>CONTACTS</h4>
+        <p><i class="iconfont">&#xe6e6;</i>Adress: Shanghai<br>
+        <i class="iconfont">&#xe675;</i>Mobile: 13301693108<br>
+        <i class="iconfont">&#xe94d;</i>E-mail:tangyuhuan@sjtu.edu.cn<br>
+        <a href="http://www.jianshu.com/u/0f9b8eee108c"><i class="iconfont">&#xe65b;</i>Blog</a><br>
+        <a href="https://github.com/tangyuhuan/yuhuan"><i class="iconfont">&#xe62f;</i>Github</a>
+        </p>
+      </div>
+    </div>
+    <div id="education">
+    <h3>Education</h3>
+    <dl>
+      <dt><span class="circle"></span>Shanghai Jiao Tong University/<em>2016.9 - now</em></dt>
+      <dd>electronics and communication engineering(master)</dd>
+      <dt><span class="circle"></span>Beijing University of Posts and Telecommunications  /<em>2012.9 - 2016.6</em></dt>
+      <dd>Information Engineering</dd> 
+    </dl>
+  </div>
+  <div id="work-experience" >
+    <h3>Work Experience</h3>
+    <dl>
+      <dt><span class="circle"></span>ebay/<em>2016.11-2017.3</em></dt>
+      <dd>PM Assist Intern<br>
+      Assist with Product manager on product management, in charge of PM related activities, like product information maintain, video making for product promotion, user cases maintain, wiki page editing, website development.</dd>
+      <dt><span class="circle"></span>Science and Technology Committee of Jiading District/<em>2013.6-2013.8</em></dt>
+      <dd>Integrated Management Intern<br>
+      Being in charge of the organization work for the 13th Science and Technology Progress annual award of JiadingDistrict,Shanghai and the production of commemorative book.
+</dd> 
+    </dl>
+  </div>
+  <div id="language">
+     <h3>Language Skill</h3>
+     <ul>
+       <li><i class="iconfont">&#xe610;</i> CET-6: 528</li>
+       <li><i class="iconfont">&#xe610;</i>CET-4: 565</li>
+     </ul>
+  </div>
+  <div id="Awards">
+    <h3>Honors & Awards</h3>
+    <ul>
+      <li><i class="iconfont">&#xe610;</i>"Huawei Cup" the thirteenth National Graduate Mathematical Contest Second Prize/<em>2016.11</em></li>
+      <li><i class="iconfont">&#xe610;</i>The Second Prize of School Scholarship/<em>2014-2015</em></li>
+      <li><i class="iconfont">&#xe610;</i>Merit Student at Beijing University of Posts and Telecommunications/<em>2014-2015</em></li>
+      <li><i class="iconfont">&#xe610;</i>The Second Prize of School Scholarship/<em>2013-2014</em></li>
+    </ul>
+  </div>
+    <div id="professional-skills">
+    <h3>Professional skills</h3>
+    <ul>
+      <li><i class="iconfont">&#xe610;</i> HTML&CSS</li>
+      <li><i class="iconfont">&#xe610;</i>JAVASCRIPT</li>
+      <li><i class="iconfont">&#xe610;</i>JQUERY</li>
+      <li><i class="iconfont">&#xe610;</i>Photoshop</li>
+      
+      <li><i class="iconfont">&#xe610;</i>Matlab</li>
+      <li><i class="iconfont">&#xe610;</i>C</li>
+    </ul>
+  </div>
+  <div id="extra-curricular-activities">
+    <h3>Extra Curricular Activities</h3>
+    <ul>
+      <li><i class="iconfont">&#xe610;</i>secretary of Youth League branch/<em>2016.9--now</em></li>
+      <li><i class="iconfont">&#xe610;</i>volunteer for China's National Grand Theater/<em>2013.9--2014.6</em></li>
+      <li><i class="iconfont">&#xe610;</i>college etiquette team captain/<em>2013.9--2014.6</em></li>
+    </ul>
+  </div>  
+  
+
+  </div> 
+</body>
+</html>
