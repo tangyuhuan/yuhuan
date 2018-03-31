@@ -98,7 +98,7 @@ body{
 .sizes{
 	position: fixed;
 	right: 20px;
-	top: 70px;
+	top: 80px;
 	transition: all 0.3;
 }
 .sizes> li.active {
@@ -109,7 +109,7 @@ body{
 	height: 0;
 	width: 40px;
 	border-top:4px solid black;
-	margin-bottom: 25px;
+	margin-bottom: 35px;
 	border-radius: 3px;
 }
 .sizes > .thick{
