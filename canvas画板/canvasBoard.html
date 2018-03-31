@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script src="//at.alicdn.com/t/font_611936_r1ahagupcu4pwrk9.js"></script>
 	<meta charset="utf-8">
 	<!--content="width=device-width页面宽度等于设备宽度，user-scalable=no用户是否可以缩放，no-->
 	<!--这条命令使得设备多大页面多大，用户不能放大和缩小-->
@@ -11,10 +12,35 @@
 </head>
 <body>
 	<canvas id="tutorial" width="150" height="150"></canvas>
-	<button id="eraser">橡皮擦</button>
-	<div id="chooseColor"><button id="red">
-	<button id="blue"><button id="green"></button><button id="reset">重置</button>
+	<div id="actions" class="actions">
+		<svg class="icon active" id="pen">
+	    	<use xlink:href="#icon-Pen"></use>
+		</svg>
+			<svg class="icon" id="eraser">
+	    	<use xlink:href="#icon-ico-erasertool-May"></use>
+		</svg>
 	</div>
+	<div id="cleanBoard" class="cleanBoard">
+		<svg class="icon" id="clean">
+	    	<use xlink:href="#icon-clean-o"></use>
+		</svg>
+	</div>
+	<div id="saveBoard" class="saveBoard">
+		<svg class="icon" id="save">
+	    	<use xlink:href="#icon-save-o"></use>
+		</svg>
+	</div>
+	<ol class="colors" id="colors">
+		<li class="blue" id="blue"></li>
+		<li class="green" id="green"></li>
+		<li class="red" id="red"></li>
+		<li class="yellow" id="yellow"></li>
+		<li class="black active" id="black">ss</li>	
+	</ol>
+	<ol class="sizes">
+		<li class="thin active" id="thin"></li>
+		<li class="thick" id="thick"></li>
+	</ol>	
 	<script src="./main.js"></script>
 </body>
 </html>

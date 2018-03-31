@@ -1,17 +1,46 @@
+
 var canvas = document.getElementById('tutorial');
 var context = canvas.getContext('2d');
 autoSetCanvasSize(canvas);
 listenToUser(canvas);
+var lineWidth = 4;
 /*********橡皮擦or画笔被启用************/
 var eraserEnabled=false;
-eraser.onclick=function(){
-	eraserEnabled=!eraserEnabled;
-	if(eraserEnabled){
-		eraser.textContent="画笔";
-	}else{
-		eraser.textContent="橡皮擦";
-	}
+
+pen.onclick=function(){
+	eraserEnabled=false;
+	pen.classList.add('active');
+	eraser.classList.remove('active');
 }
+eraser.onclick=function(){
+	eraserEnabled=true;
+	eraser.classList.add('active');
+	pen.classList.remove('active');
+}
+thin.onclick=function(){
+	lineWidth=4;
+	thin.classList.add('active');
+	thick.classList.remove('active');
+}
+thick.onclick=function(){
+	lineWidth=7;
+	thick.classList.add('active');
+	thin.classList.remove('active');
+}
+/*********清除画布、保存画布************/
+clean.onclick=function(){
+	context.clearRect(0,0,canvas.width,canvas.height);
+}
+save.onclick=function(){
+	var url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+	var a = document.createElement('a')
+	document.body.appendChild(a)
+	a.href = url
+	a.download = 'myPic.jpg'
+	a.target="_blank"
+	a.click()
+}
+
 //canvas每当高度或宽度被重设时，画布内容就会被清空
 /*********自动设置画布大小************/
 function autoSetCanvasSize(canvas){
@@ -26,33 +55,42 @@ function autoSetCanvasSize(canvas){
 		canvas.height=pageHeight;
 	}
 }
-/*********重置画布************/
-reset.onclick=function(canvas){
-	context.clearRect(0,0,document.documentElement.clientWidth,document.documentElement.clientHeight);
+function removeChildrenActive(){
+	black.classList.remove("active");
+	yellow.classList.remove("active");
+	red.classList.remove("active");
+	blue.classList.remove("active");
+	green.classList.remove("active");
 }
-
-
 /*********监听鼠标************/
 function listenToUser(canvas){
 	context.strokeStyle = "rgb(0,0,0)";
+	black.onclick=function(){
+		context.strokeStyle = "rgb(0,0,0)";
+		removeChildrenActive()
+		black.classList.add("active");
+	}
+	yellow.onclick=function(){
+		context.strokeStyle ="rgb(255,255,51)"
+		removeChildrenActive()
+		yellow.classList.add("active")
+	}
 	red.onclick=function(){
-		if(eraserEnabled){
-			eraserEnabled=!eraserEnabled;
-		}
-		context.strokeStyle ="rgb(255,0,0)";
+		context.strokeStyle ="rgb(255,153,153)";
+		removeChildrenActive()
+		red.classList.add("active");
 	}
 	blue.onclick=function(){
-		if(eraserEnabled){
-			eraserEnabled=!eraserEnabled;
-		}
-		context.strokeStyle ="rgb(0,0,255)";
+		context.strokeStyle ="rgb(153,204,255)";
+		removeChildrenActive()
+		blue.classList.add("active");
 	}
 	green.onclick=function(){
-		if(eraserEnabled){
-			eraserEnabled=!eraserEnabled;
-		}
-		context.strokeStyle ="rgb(0,255,0)";
+		context.strokeStyle ="rgb(102,204,102)";
+		removeChildrenActive()
+		green.classList.add("active");
 	}
+
 
 
 	var using=false;
@@ -134,7 +172,7 @@ function drawLine(x1,x2,y1,y2){
 	context.beginPath();
 	context.moveTo(x1,x2);
 	context.lineTo(y1,y2);
-	context.lineWidth=5;
+	context.lineWidth=lineWidth;
 	context.stroke();
 	context.closePath();
 }
