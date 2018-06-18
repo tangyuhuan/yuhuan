@@ -99,7 +99,6 @@ function listenToUser(canvas){
 	if(document.body.ontouchstart!== undefined){
 		//触碰设备
 		canvas.ontouchstart = function(a){
-			console.log('开始摸我了');
 			var x=a.touches[0].clientX;
 			var y=a.touches[0].clientY;
 			using=true;
@@ -111,7 +110,6 @@ function listenToUser(canvas){
 
 		}
 		canvas.ontouchmove = function(a){
-			console.log('边摸边动');
 			var x=a.touches[0].clientX;
 			var y=a.touches[0].clientY;
 			if(!using){
@@ -127,7 +125,6 @@ function listenToUser(canvas){
 			}
 		}
 		canvas.ontouchend = function(){
-			console.log('摸完了');
 			using=false;
 		}
 
@@ -175,4 +172,13 @@ function drawLine(x1,x2,y1,y2){
 	context.lineWidth=lineWidth;
 	context.stroke();
 	context.closePath();
+}
+
+
+/************画圆**************/
+
+function drawCircle(x,y,radius) {
+	ctx.beginPath();
+	ctx.arc(x, y, radius, 0, (Math.PI/180)*360);
+	ctx.fill();
 }
